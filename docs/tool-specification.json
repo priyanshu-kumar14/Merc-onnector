@@ -1,0 +1,11 @@
+{
+  "server": "zoho-inventory-readonly",
+  "transport": "stdio",
+  "tools": [
+    {"name":"list_items","description":"List Zoho Inventory items with pagination.","inputSchema":{"type":"object","properties":{"page":{"type":"integer","minimum":1,"default":1},"per_page":{"type":"integer","minimum":1,"maximum":100,"default":20}},"additionalProperties":false}},
+    {"name":"get_item","description":"Get an item by numeric Zoho item ID.","inputSchema":{"type":"object","properties":{"item_id":{"type":"string","pattern":"^[0-9]+$"}},"required":["item_id"],"additionalProperties":false}},
+    {"name":"search_items","description":"Search items using Zoho Inventory search_text.","inputSchema":{"type":"object","properties":{"query":{"type":"string","minLength":1},"page":{"type":"integer","minimum":1,"default":1},"per_page":{"type":"integer","minimum":1,"maximum":100,"default":20}},"required":["query"],"additionalProperties":false}},
+    {"name":"list_sales_orders","description":"List sales orders with pagination and optional status.","inputSchema":{"type":"object","properties":{"page":{"type":"integer","minimum":1,"default":1},"per_page":{"type":"integer","minimum":1,"maximum":100,"default":20},"status":{"type":["string","null"]}},"additionalProperties":false}},
+    {"name":"get_sales_order","description":"Get a sales order by numeric Zoho sales-order ID.","inputSchema":{"type":"object","properties":{"order_id":{"type":"string","pattern":"^[0-9]+$"}},"required":["order_id"],"additionalProperties":false}}
+  ]
+}

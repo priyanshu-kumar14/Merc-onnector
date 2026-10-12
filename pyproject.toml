@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zoho-inventory-mcp-connector"
+version = "0.1.0"
+description = "Read-only MCP connector for Zoho Inventory items and sales orders"
+requires-python = ">=3.11"
+dependencies = ["httpx>=0.27,<1", "mcp>=1.0.0,<2", "pydantic>=2.6,<3", "python-dotenv>=1.0,<2"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<9", "respx>=0.21,<1"]
+
+[project.scripts]
+zoho-inventory-mcp = "zoho_inventory_mcp.server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
